@@ -28,3 +28,9 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+jar {
+    manifest {
+        attributes(
+                "Class-Path": configurations.runtimeClasspath .collect { it.getName() }.join(' '))
+    }
+}
