@@ -1,4 +1,4 @@
-FROM gradle:7.4.1-jdk17-alpine AS TEMP_BUILD_IMAGE
+FROM gradle:7.5-jdk17-alpine AS TEMP_BUILD_IMAGE
 ENV APP_HOME=/usr/app/
 WORKDIR $APP_HOME
 COPY build.gradle settings.gradle $APP_HOME
@@ -12,7 +12,7 @@ RUN gradle build || return 0
 COPY . .
 RUN gradle clean build
 FROM openjdk:17
-ENV ARTIFACT_NAME=FlightApi-0.0.1-SNAPSHOT.jar
+ENV ARTIFACT_NAME=md-backend-0.0.1-plain.jar
 ENV APP_HOME=/usr/app/
 
 WORKDIR $APP_HOME
