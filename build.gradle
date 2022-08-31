@@ -32,7 +32,7 @@ tasks.named('test') {
 jar {
     manifest {
         attributes(
-                'MdBackendApplication': 'pl.kathelan.mdbackend.MdBackendApplication'
+                'Main-Class': 'pl.kathelan.mdbackend.MdBackendApplication'
         )
     }
 }
