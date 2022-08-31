@@ -28,3 +28,11 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+jar {
+    manifest {
+        attributes(
+                'MdBackendApplication': 'pl.kathelan.mdbackend.MdBackendApplication'
+        )
+    }
+}
