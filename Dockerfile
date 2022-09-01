@@ -12,7 +12,7 @@ RUN gradle build || return 0
 COPY . .
 RUN gradle clean build
 FROM openjdk:17
-ENV ARTIFACT_NAME=md-backend-0.0.1-plain.jar
+ENV ARTIFACT_NAME=md-backend-0.0.1.jar
 ENV APP_HOME=/usr/app/
 
 WORKDIR $APP_HOME
