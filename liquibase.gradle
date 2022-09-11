@@ -1,0 +1,27 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'org.liquibase:liquibase-gradle-plugin:1.1.0'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'org.liquibase.gradle'
+
+ext.springProps = new Properties()
+InputStream is = new FileInputStream("src/main/resources/lol.properties")
+springProps.load(is)
+
+liquibase {
+    activities {
+        main {
+            url springProps['spring.datasource.url']
+            username springProps['spring.datasource.user']
+            password springProps['spring.datasource.password']
+        }
+    }
+    runList = 'main'
+}

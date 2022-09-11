@@ -12,9 +12,12 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
     database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+
+  liquibase:
+    change-log: classpath:db/changelog.xml
 server:
   servlet:
     context-path: /springfox
