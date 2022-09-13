@@ -34,6 +34,7 @@ public class RoleService {
                 .build();
         log.info("created Role with name: {}", role.getName());
         roleRepository.save(role);
+
     }
 
     public Role updateRole(RoleRequestDto roleRequestDto, Role role) {

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import pl.kathelan.mdbackend.api.dtos.RoleDto;
 import pl.kathelan.mdbackend.api.dtos.RoleRequestDto;
@@ -14,7 +15,8 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@RestController("/roles")
+@RestController
+@RequestMapping("/roles")
 @AllArgsConstructor
 public class RoleController {
 
@@ -35,12 +37,12 @@ public class RoleController {
     }
 
     @PostMapping
-    public ResponseEntity<Void> createRole(@RequestBody RoleRequestDto roleRequestDto) {
+    public ResponseEntity<RoleDto> createRole(@RequestBody RoleRequestDto roleRequestDto) {
         roleService.saveRole(roleRequestDto);
-        return new ResponseEntity<Void>(HttpStatus.CREATED);
+        return new ResponseEntity<RoleDto>(HttpStatus.CREATED);
     }
 
-    @PatchMapping(path = "/{id}", consumes = "application/json-patch+json")
+    @PatchMapping("/{id}")
     public ResponseEntity<RoleDto> updateRole(@PathVariable Long id, @RequestBody RoleRequestDto roleRequestDto) {
         try {
             Role role = roleService.getRoleById(id);

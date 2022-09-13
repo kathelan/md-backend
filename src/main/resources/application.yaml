@@ -20,4 +20,4 @@ spring:
     change-log: classpath:db/changelog.xml
 server:
   servlet:
-    context-path: /springfox
+    context-path: /api
