@@ -1,16 +1,21 @@
 package pl.kathelan.mdbackend.entities;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.Instant;
 
 @Entity
+@Table(name = "role")
 @Data
+@Builder
+@AllArgsConstructor
 public class Employee {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -22,6 +27,13 @@ public class Employee {
     @OneToOne
     private Role role;
 
-    @Column
+    @Column(name = "created_at")
     private Instant createdAt;
+
+    @Column(name = "updated_at")
+    private Instant updatedAt;
+
+    public Employee() {
+        
+    }
 }
